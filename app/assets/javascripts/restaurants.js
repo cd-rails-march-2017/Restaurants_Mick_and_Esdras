@@ -15,7 +15,6 @@ $(document).ready(function(){
         data: valuesToSubmit,
         dataType: "HTML"
       }).success(function(response){
-        console.log(response);
         $(".restaurants").append(response)
       });
       return false; // prevents normal behaviour
@@ -34,7 +33,6 @@ $(document).on("submit", ".rating_form", function(){
     data: valuesToSubmit,
     dataType: "JSON"
   }).success(function(response){
-    console.log(response);
     $(`#rating_${response.id}`).text(response.rating)
   });
   return false;
