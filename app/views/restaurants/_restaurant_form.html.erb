@@ -1,0 +1,22 @@
+<div class="restaurant">
+  <p class="restaurant_area"><%=@restaurant.name%> | <%=@restaurant.rating%></p>
+  <%if @user%>
+    <form class="rating_form" action="/rating/<%=@restaurant.id%>/<%=@user.id%>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit" value="RATE">
+    </form>
+  <%end%>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".rating_form").hide()
+})
+</script>

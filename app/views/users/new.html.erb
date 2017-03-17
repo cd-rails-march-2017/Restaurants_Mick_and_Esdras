@@ -1,0 +1,25 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <h6> <%= e %> </h6>
+  <% end %>
+<% end %>
+<% if flash[:notice] %>
+  <p> <%= flash[:notice] %></p>  
+<% end %>
+
+<form class="" action="/users/login" method="post">
+  <h1>Login</h1>
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="text" name="user[username]" placeholder="Username" value="">
+  <input type="password" name="user[password]" placeholder="Password" value="">
+  <input type="submit" name="Login!" value="Login!">
+</form>
+
+<form class="" action="/users" method="post">
+  <h1>Create Account</h1>
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="text" name="user[username]" placeholder="Username" value="">
+  <input type="password" name="user[password]" placeholder="Password" value="">
+  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password" value="">
+  <input type="submit" name="" value="Create Account!">
+</form>

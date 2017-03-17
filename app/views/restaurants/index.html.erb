@@ -1,0 +1,37 @@
+<h1>Restaurants</h1>
+<% if @user %>
+  <a href="/users/logout">Logout</a>
+  <button type="button" name="Add Restaurant" id="add">Add a Restaurant</button>
+  <form id="restaurant_form" action="#" method="#">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="text" name="name" placeholder="Restaurant Name">
+    <input id="create" type="submit" value="Create Restaurant">
+  </form>
+<%else%>
+  <a href="/users/new">Login/Register</a>
+<%end%>
+<%if flash[:errors]%>
+  <%flash[:errors].each do |error|%>
+    <p><%=error%></p>
+  <%end%>
+<%end%>
+<div class="restaurants">
+<%@restaurants.each do |restaurant|%>
+  <div class="restaurant">
+    <p class="restaurant_area"> <%=restaurant.name%> | <%=restaurant.rating%></p>
+    <%if @user%>
+      <form class="rating_form" action="/rating/<%=restaurant.id%>/<%=@user.id%>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <input type="submit" value="RATE">
+      </form>
+    <%end%>
+  </div>
+<%end%>
+</div>
