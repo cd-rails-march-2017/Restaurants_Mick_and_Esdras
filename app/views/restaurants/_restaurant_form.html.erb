@@ -1,5 +1,7 @@
 <div class="restaurant">
-  <p class="restaurant_area"><%=@restaurant.name%> | <%=@restaurant.rating%></p>
+  <div class="restaurant_area">
+    <p> <%=restaurant.name%></p> <p class="rating#<%=restaurant.id%>"><%=restaurant.rating%></p>
+  </div>
   <%if @user%>
     <form class="rating_form" action="/rating/<%=@restaurant.id%>/<%=@user.id%>" method="post">
       <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">

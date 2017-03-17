@@ -25,3 +25,17 @@ $(document).ready(function(){
 $(document).on("click", ".restaurant_area", function(){
   $(this).siblings(".rating_form").toggle()
 })
+
+$(document).on("submit", ".rating_form", function(){
+  var valuesToSubmit = $(this).serialize();
+  $.ajax({
+    type: "POST",
+    url: "/rating",
+    data: valuesToSubmit,
+    dataType: "JSON"
+  }).success(function(response){
+    console.log(response);
+    $(`#rating_${response.id}`).text(response.rating)
+  });
+  return false;
+})

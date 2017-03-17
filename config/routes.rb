@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
   post 'restaurants/' => 'restaurants#create'
-  post 'rating/:r_id/:u_id' => 'ratings#create'
+  post 'rating/' => 'ratings#create'
   get 'users/new'
   post 'users/' => 'users#create'
   post 'users/login'
